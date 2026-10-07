@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+set(COMPONENTS main)
+set(PROJECT_VER "1.2.0")
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(tera_ble_midi VERSION 1.2.0)

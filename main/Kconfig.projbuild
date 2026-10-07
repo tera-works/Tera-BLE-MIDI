@@ -1,0 +1,35 @@
+menu "Tera BLE MIDI"
+config TERA_NAME
+    string "BLE device name (max 29 ASCII bytes)"
+    default "ESP MIDI"
+config TERA_RX_GPIO
+    int "Module RX GPIO (main MCU TX)"
+    range 0 39
+    default 16
+config TERA_TX_GPIO
+    int "Module TX GPIO (main MCU RX)"
+    range 0 33
+    default 17
+config TERA_DEBUG
+    bool "Development status logs on UART0"
+    default n
+config TERA_LED_ENABLED
+    bool "Single LED connection and MIDI activity indication"
+    default y
+    help
+        Optional LED. Disable to keep the original lowest-power four-wire design.
+        The low-priority display task observes counters; MIDI never waits for it.
+config TERA_LED_GPIO
+    int "Status LED GPIO"
+    depends on TERA_LED_ENABLED
+    range 0 33
+    default 25
+config TERA_LED_ACTIVE_LOW
+    bool "LED lights when GPIO is LOW"
+    depends on TERA_LED_ENABLED
+    default n
+config TERA_PROBE_GPIO
+    int "Development latency pulse GPIO (-1 disables)"
+    range -1 33
+    default -1
+endmenu
